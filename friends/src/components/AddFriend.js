@@ -1,15 +1,29 @@
 import React, {useState} from "react";
 import { axiosWithAuth } from '../axiosWithAuth.js';
 
-const Add = () => {
+const AddFriend = (props) => {
   const [entry, setEntry] = useState({
     name: "",
-    age: 0,
+    age: "",
     email: ""
 })
   
 const handleSubmit = (e) => {
   e.preventDefault();
+  axiosWithAuth()
+      .post('http://localhost:5000/api/friends', entry)
+      .then(res => {
+          props.getData();
+          setEntry({
+            name: "",
+            age: "",
+            email: ""
+          })
+        })
+      .catch(err => {
+          console.log("Err", err.response)
+        })
+  
 }
 
 const handleChange = (e) => {
@@ -47,4 +61,4 @@ const handleChange = (e) => {
   
   }
   
-  export default FriendsList;
+  export default AddFriend;

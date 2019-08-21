@@ -7,7 +7,7 @@ import PrivateRoute from './components/PrivateRoute'
 const App = () => {
   return (
     <Router>
-      <div className="App">
+      <div className="App"><h1>Welcome to facebookish</h1>
         <ul>
           <li>
             <Link to="/login">Login</Link>
